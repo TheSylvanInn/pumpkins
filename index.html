@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Sylvan Inn Pumpkin Contest</title>
+
+    <!-- Loading Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Loading Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#121212',
+                            light: '#fdfbf7',
+                            orange: '#e85d04',
+                            muted: '#9ca3af'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-brand-light font-sans antialiased selection:bg-brand-orange selection:text-white">
+
+    <!-- Pure CSS moody background -->
+    <main class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a1a1a] to-brand-dark">
+        
+        <!-- Subtle atmospheric glow at the top -->
+        <div class="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-brand-orange/5 to-transparent pointer-events-none"></div>
+
+        <!-- Teaser Content -->
+        <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+            <p class="inline-block bg-brand-orange text-white uppercase tracking-[0.15em] text-xs md:text-sm font-bold px-4 py-1.5 rounded-full mb-8 shadow-md">
+                The Sylvan Inn
+            </p>
+            
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
+                1st Annual <br><span class="text-brand-orange">Pumpkin Contest</span>
+            </h1>
+            
+            <div class="h-px w-24 bg-brand-orange/50 mx-auto mb-10"></div>
+            
+            <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">We're preparing the grounds.</h2>
+            
+            <p class="text-lg md:text-xl text-gray-300 mb-12 font-light leading-relaxed">
+                Our official contest website is currently under construction. Full details will be available shortly.
+            </p>
+
+            <!-- Diagnostic confirmation for testing
