@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon | Sylvan Inn Pumpkin Contest</title>
-
+    <title>Pumpkins on the Wall</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
     <!-- Loading Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Loading Google Fonts -->
+    
+    <!-- Loading Google Fonts: Playfair Display for headings, Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         tailwind.config = {
@@ -26,6 +30,7 @@
                             dark: '#121212',
                             light: '#fdfbf7',
                             orange: '#e85d04',
+                            orangeHover: '#dc2f02',
                             muted: '#9ca3af'
                         }
                     }
@@ -33,31 +38,318 @@
             }
         }
     </script>
+    <style>
+        /* Custom UI behaviors and aesthetics */
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(232, 93, 4, 0.4);
+            transform: translateY(-2px);
+        }
+        .transition-all-custom {
+            transition: all 0.3s ease-in-out;
+        }
+        .pumpkin-gradient {
+            background: linear-gradient(135deg, rgba(232, 93, 4, 0.1) 0%, rgba(18, 18, 18, 0) 100%);
+        }
+        
+        /* Modal setup to avoid using native alerts */
+        #custom-alert {
+            display: none;
+        }
+        #custom-alert.show {
+            display: flex;
+        }
+    </style>
 </head>
 <body class="bg-brand-dark text-brand-light font-sans antialiased selection:bg-brand-orange selection:text-white">
 
-    <!-- Pure CSS moody background -->
-    <main class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a1a1a] to-brand-dark">
-        
-        <!-- Subtle atmospheric glow at the top -->
-        <div class="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-brand-orange/5 to-transparent pointer-events-none"></div>
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="pumpkinSiteBanner.jpeg" alt="The Sylvan Inn at sunset" class="w-full h-full object-cover object-[center_43%] opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/30 via-brand-dark/60 to-brand-dark"></div>
+        </div>
 
-        <!-- Teaser Content -->
-        <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-            <p class="inline-block bg-brand-orange text-white uppercase tracking-[0.15em] text-xs md:text-sm font-bold px-4 py-1.5 rounded-full mb-8 shadow-md">
-                The Sylvan Inn
-            </p>
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-16">
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <p class="inline-block bg-brand-orange text-white uppercase tracking-[0.15em] text-xs md:text-sm font-bold px-4 py-1.5 rounded-full shadow-md">The Sylvan Inn</p>
+            </div>
             
-            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
-                1st Annual <br><span class="text-brand-orange">Pumpkin Contest</span>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight drop-shadow-lg">
+                Pumpkins on the Wall <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-yellow-500 text-4xl md:text-6xl lg:text-7xl block mt-2">Carved Pumpkin Contest</span>
             </h1>
             
-            <div class="h-px w-24 bg-brand-orange/50 mx-auto mb-10"></div>
-            
-            <h2 class="text-2xl md:text-3xl font-serif text-white mb-6">We're preparing the grounds.</h2>
-            
-            <p class="text-lg md:text-xl text-gray-300 mb-12 font-light leading-relaxed">
-                Our official contest website is currently under construction. Full details will be available shortly.
+            <p class="text-2xl md:text-3xl text-white font-serif mb-4 drop-shadow-md">
+                October 29 - 31
             </p>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Enter your best carved pumpkin! Admission is free, and every $1 vote goes to support both the Sylvan Inn and Silvermont restoration efforts.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRuNmHUPIbGjevOaWVzUDh_5WC-SSVzI2XURRtrj1QJsmZVw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="bg-brand-orange hover:bg-brand-orangeHover text-white px-8 py-4 rounded-full font-medium transition-all-custom glow-hover text-lg shadow-lg">
+                    Register a Spot
+                </a>
+                <a href="#details" class="border border-brand-orange/50 text-brand-orange px-8 py-4 rounded-full font-medium hover:bg-brand-orange/10 hover:border-brand-orange transition-all-custom text-lg backdrop-blur-sm">
+                    Contest Details
+                </a>
+            </div>
+        </div>
+        
+    </header>
 
-            <!-- Diagnostic confirmation for testing
+    <section id="details" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
+                <!-- The Story & Dates -->
+                <div>
+                    <div class="inline-block bg-brand-orange/20 text-brand-orange px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-6">
+                        Support Local Restoration
+                    </div>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6 leading-tight">Preserving Brevard's History</h2>
+                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+                        Join our community Halloween celebration! The pumpkins will be beautifully displayed along the historic wall on Main Street and Franklin Street.
+                    </p>
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
+                        It’s $1 to vote, and voting is unlimited. Send everyone you know to vote for your pumpkin! All proceeds support both the Sylvan Inn and Friends of Silvermont restoration efforts.
+                    </p>
+                   
+                    <a href="https://silvermont.org/" target="_blank" rel="noopener noreferrer" class="bg-gray-800/30 p-5 rounded-2xl border border-gray-700 flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-10 transition-all-custom hover:bg-gray-800/50 hover:border-brand-orange/40 group cursor-pointer block">
+                        <div class="bg-brand-light p-3 rounded-xl shrink-0 w-24 h-24 flex items-center justify-center shadow-inner group-hover:shadow-[0_0_15px_rgba(232,93,4,0.15)] transition-all-custom">
+                            <img src="fos-logo.webp" alt="Friends of Silvermont Logo" class="max-h-full max-w-full object-contain mix-blend-multiply">
+                        </div>
+                        <div>
+                            <span class="text-brand-orange text-xs uppercase tracking-[0.15em] font-bold block mb-1">In Partnership With</span>
+                            <h4 class="text-white font-serif text-xl mb-1 group-hover:text-brand-orange transition-colors">Friends of Silvermont</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Working together to preserve and restore Brevard's historic landmarks.</p>
+                        </div>
+                    </a>
+
+                    <div class="bg-gray-900/80 p-8 rounded-3xl border border-gray-800 shadow-xl">
+                        <h3 class="text-xl font-medium mb-5 text-white flex items-center gap-3">
+                            <i class="fa-regular fa-calendar text-brand-orange"></i> Important Dates
+                        </h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-pen-to-square text-brand-muted text-sm"></i></div>
+                                <div><strong class="text-white block mb-1">Registration:</strong> Register by Oct 23rd for a FREE spot. Late registration is $10.</div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-arrow-right-to-bracket text-brand-muted text-sm"></i></div>
+                                <div><strong class="text-white block mb-1">Pumpkin Drop-off:</strong> Oct 29th. Bring to the receiving table in the front yard.</div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-eye text-brand-muted text-sm"></i></div>
+                                <div><strong class="text-white block mb-1">Display & Voting:</strong> Oct 29th - 31st (3 Nights) along the historic wall.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-12 relative before:absolute before:inset-0 before:ml-[31px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-800 before:to-transparent">
+                    
+                    <!-- Step 1 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full border-4 border-brand-dark bg-gray-900 text-brand-orange font-serif text-2xl font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-brand-orange group-hover:text-white">
+                            1
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-gray-900/50 border border-gray-800 ml-4 md:ml-0 transition-all-custom group-hover:border-gray-600">
+                            <h3 class="text-2xl font-serif mb-2 text-white">Carve & Enter</h3>
+                            <p class="text-gray-400 leading-relaxed">Register to claim your spot on the wall. Carve your pumpkin at home (please keep all designs family-friendly).</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full border-4 border-brand-dark bg-gray-900 text-brand-orange font-serif text-2xl font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-brand-orange group-hover:text-white">
+                            2
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-gray-900/50 border border-gray-800 ml-4 md:ml-0 transition-all-custom group-hover:border-gray-600">
+                            <h3 class="text-2xl font-serif mb-2 text-white">Drop Off</h3>
+                            <p class="text-gray-400 leading-relaxed">Bring your carved pumpkin to The Sylvan Inn on October 29th. We'll have a receiving table ready in the front yard.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full border-4 border-brand-dark bg-gray-900 text-brand-orange font-serif text-2xl font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-brand-orange group-hover:text-white">
+                            3
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-gray-900/50 border border-gray-800 ml-4 md:ml-0 transition-all-custom group-hover:border-gray-600">
+                            <h3 class="text-2xl font-serif mb-2 text-white">The Community Votes</h3>
+                            <p class="text-gray-400 leading-relaxed">Admission is free! Bring friends to view the wall for 3 nights. Every $1 equals one vote for your favorite pumpkin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#0a0a0a] px-6 border-y border-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl mb-6">Prizes & Rules</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Everything you need to know about entering, winning, and picking up your pumpkin.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Rules Card -->
+                <div class="pumpkin-gradient border border-gray-800 rounded-3xl p-10 hover:border-brand-orange/40 transition-all-custom group h-full flex flex-col">
+                    <div class="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center mb-6 border border-gray-800 group-hover:border-brand-orange/50 transition-colors">
+                        <i class="fa-solid fa-clipboard-list text-2xl text-brand-muted group-hover:text-brand-orange transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-3xl mb-4 text-white">Entry Rules</h3>
+                    <ul class="text-gray-400 mb-8 flex-grow leading-relaxed space-y-3">
+                        <li><i class="fa-solid fa-check text-brand-orange mr-2"></i> Register by Oct 23 for a free spot on the wall.</li>
+                        <li><i class="fa-solid fa-check text-brand-orange mr-2"></i> Registrations after Oct 23 cost $10.</li>
+                        <li><i class="fa-solid fa-check text-brand-orange mr-2"></i> Carve your own pumpkin at home.</li>
+                        <li><i class="fa-solid fa-check text-brand-orange mr-2"></i> Keep all designs Family Friendly.</li>
+                    </ul>
+                </div>
+
+                <!-- Prizes Card (Center popped out) -->
+                <div class="bg-gradient-to-b from-gray-900 to-brand-dark border border-brand-orange/50 rounded-3xl p-10 relative transform md:-translate-y-6 hover:border-brand-orange transition-all-custom shadow-[0_10px_40px_rgba(232,93,4,0.15)] h-full flex flex-col z-10">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-xs font-bold uppercase tracking-widest py-1.5 px-6 rounded-full shadow-lg whitespace-nowrap">
+                        To The Winners
+                    </div>
+                    <div class="w-14 h-14 bg-brand-orange/10 rounded-2xl flex items-center justify-center mb-6 border border-brand-orange/30">
+                        <i class="fa-solid fa-trophy text-2xl text-brand-orange"></i>
+                    </div>
+                    <h3 class="font-serif text-3xl mb-4 text-white">The Prizes</h3>
+                    <p class="text-gray-400 mb-8 flex-grow leading-relaxed">Get the most votes for your pumpkin to win! Unlimited voting means you can rally your friends and family.</p>
+                    <div class="pt-6 border-t border-gray-800 space-y-3">
+                        <p class="text-white font-medium flex items-center"><i class="fa-solid fa-medal text-yellow-400 mr-3 text-xl"></i> 1st Place Prize</p>
+                        <p class="text-white font-medium flex items-center"><i class="fa-solid fa-medal text-gray-400 mr-3 text-xl"></i> 2nd Place Prize</p>
+                        <p class="text-white font-medium flex items-center"><i class="fa-solid fa-medal text-amber-600 mr-3 text-xl"></i> 3rd Place Prize</p>
+                    </div>
+                </div>
+
+                <!-- End of Contest Card -->
+                <div class="pumpkin-gradient border border-gray-800 rounded-3xl p-10 hover:border-brand-orange/40 transition-all-custom group h-full flex flex-col">
+                    <div class="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center mb-6 border border-gray-800 group-hover:border-brand-orange/50 transition-colors">
+                        <i class="fa-solid fa-clock text-2xl text-brand-muted group-hover:text-brand-orange transition-colors"></i>
+                    </div>
+                    <h3 class="font-serif text-3xl mb-4 text-white">The Finale</h3>
+                    <p class="text-gray-400 mb-8 flex-grow leading-relaxed">
+                        The pumpkins will be displayed for voting for 3 nights. <br><br>
+                        <strong>The winner will be announced on Halloween night at 8:00 PM!</strong>
+                    </p>
+                    <div class="pt-6 border-t border-gray-800">
+                        <p class="text-gray-400 text-sm">After the announcement, you are free to take your pumpkin back home, or we can securely dispose of it for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vote" class="py-24 px-6 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-4xl mx-auto text-center">
+            
+            <!-- Voting Box -->
+            <div class="bg-gray-900 border border-gray-800 rounded-3xl p-10 md:p-16 shadow-2xl mb-24 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-brand-orange to-transparent"></div>
+                
+                <h2 class="font-serif text-4xl md:text-5xl mb-6 text-white">Vote For Your Favorite</h2>
+                <p class="text-gray-400 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
+                    Can't make it to the wall in person? You can still cast your $1 votes and support the restoration. Click below to donate directly. <strong>Please type the Pumpkin Number in the transaction notes!</strong>
+                </p>
+                
+                <a href="https://venmo.com/?txn=pay&recipients=@Joy-Shind&note=Pumpkin%20Number:%20" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-4 bg-[#008CFF] hover:bg-[#0074d9] text-white px-10 py-5 rounded-full font-medium transition-all-custom shadow-[0_0_30px_rgba(0,140,255,0.25)] text-lg w-full sm:w-auto">
+                    <i class="fa-brands fa-venmo text-2xl"></i>
+                    Donate & Vote via Venmo
+                </a>
+            </div>
+
+            <!-- Sign Up Box -->
+            <div class="max-w-2xl mx-auto bg-brand-dark">
+                <div class="w-20 h-20 mx-auto bg-gray-900 rounded-full flex items-center justify-center mb-8 border border-gray-800">
+                    <i class="fa-solid fa-clipboard-check text-3xl text-brand-orange"></i>
+                </div>
+                <h2 class="font-serif text-3xl md:text-4xl mb-6 text-white">Ready to Enter?</h2>
+                <p class="text-gray-400 mb-10 text-lg">
+                    Remember to register by October 23rd to secure a <strong>free</strong> spot on the wall ($10 late fee applies after). Fill out our online form to sign up!
+                </p>
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRuNmHUPIbGjevOaWVzUDh_5WC-SSVzI2XURRtrj1QJsmZVw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-orange hover:bg-brand-orangeHover text-white px-10 py-5 rounded-full font-semibold transition-all-custom shadow-lg hover:shadow-brand-orange/30 text-lg">
+                    Registration Form
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-gray-900 bg-[#080808] py-12">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <div class="text-center md:text-left">
+                <h3 class="font-serif text-2xl font-bold mb-2 text-white">The Sylvan Inn</h3>
+                <p class="text-gray-500">315 E Main Street</p>
+                <p class="text-gray-500">Brevard, North Carolina</p>
+            </div>
+            
+            <div class="flex justify-center gap-6">
+                <a href="#" class="w-12 h-12 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-brand-orange hover:border-brand-orange/50 transition-all-custom">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-brand-orange hover:border-brand-orange/50 transition-all-custom">
+                    <i class="fa-brands fa-facebook-f text-xl"></i>
+                </a>
+            </div>
+            
+            <div class="text-gray-600 text-sm text-center md:text-right">
+                <p>&copy; 2026 The Sylvan Inn. All rights reserved.</p>
+                <p class="mt-1">In partnership with Friends of Silvermont.</p>
+                <p class="mt-1 text-xs">pumpkins.thesylvaninn.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Alerts (To satisfy the no-alert rule) -->
+    <div id="custom-alert" class="fixed inset-0 z-50 items-center justify-center bg-black/80 backdrop-blur-sm px-4 hidden transition-opacity duration-300">
+        <div class="bg-gray-900 border border-gray-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl transform scale-95 transition-transform duration-300" id="alert-content">
+            <div class="w-16 h-16 bg-brand-orange/10 rounded-full flex items-center justify-center mb-6 mx-auto border border-brand-orange/30">
+                <i class="fa-solid fa-check text-2xl text-brand-orange"></i>
+            </div>
+            <h4 id="alert-title" class="text-2xl font-serif font-bold text-white mb-4 text-center">Title</h4>
+            <p id="alert-message" class="text-gray-400 text-center mb-8">Message</p>
+            <button onclick="closeCustomAlert()" class="w-full bg-white text-brand-dark font-semibold py-3 rounded-xl hover:bg-gray-200 transition-colors">
+                Got it
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Modal logic
+        const alertModal = document.getElementById('custom-alert');
+        const alertTitle = document.getElementById('alert-title');
+        const alertMessage = document.getElementById('alert-message');
+        const alertContent = document.getElementById('alert-content');
+
+        function showCustomAlert(title, message) {
+            alertTitle.textContent = title;
+            alertMessage.textContent = message;
+            alertModal.classList.remove('hidden');
+            alertModal.classList.add('flex');
+            
+            // Small delay to allow display:flex to apply before animating scale
+            setTimeout(() => {
+                alertContent.classList.remove('scale-95');
+                alertContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeCustomAlert() {
+            alertContent.classList.remove('scale-100');
+            alertContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                alertModal.classList.remove('flex');
+                alertModal.classList.add('hidden');
+            }, 200);
+        }
+    </script>
+</body>
+</html>
